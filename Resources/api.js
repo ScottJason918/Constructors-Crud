@@ -1,6 +1,6 @@
-var db = Ti.Database.open("Dbase");
+var db = Ti.Database.open("dBase");
 var data= [];
-
+var imp= [];
 
 ///Getting information from API and passing to Array
 var yes = function (){
@@ -28,12 +28,39 @@ var yes = function (){
 	//console.log(thingInfo);
 };
 
-var info = db.execute("SELECT * FROM webTable");
+var info = db.execute("SELECT * FROM webTab");
 while(info.isValidRow()){
 	var dbInfo = JSON.parse(info.fieldByName("web"));
-	console.log(dbInfo);
-	dbInfo.next();
+	imp.push(dbInfo);
+	info.next();
+	
 };
+
+for(var i=0; i < imp.length; i++){
+	var pic = imp[i].pic;
+	var title = imp[i].title;
+	var listView = Ti.UI.createView({
+		backgroundColor: "#EBEBEB",
+		bottom: 2,
+		picture: pic,
+		height: Ti.UI.SIZE
+	});
+		var text = Ti.UI.createLabel({
+		text: title,
+		top : 2,
+		bottom: 2,
+		left: 5,
+		right: 5,
+		textAlign: "left",
+		picture: pic,
+		height: Ti.UI.SIZE
+		
+	});
+	console.log(title);
+	listView.add(text);
+	infoView.add(listView);
+};
+
 info.close();
 db.close();
 
