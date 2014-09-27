@@ -49,7 +49,6 @@ for(var i=0; i < imp.length; i++){
 	var listView = Ti.UI.createView({
 		backgroundColor: "#EBEBEB",
 		bottom: 2,
-		picture: pic,
 		height: Ti.UI.SIZE
 	});
 		var text = Ti.UI.createLabel({
@@ -64,6 +63,7 @@ for(var i=0; i < imp.length; i++){
 	});
 	listView.add(text);
 	infoView.add(listView);
+	main.add(infoView);
 };
 
 var no = function(){
