@@ -40,7 +40,7 @@ var infoView = Ti.UI.createScrollView({
 });
 infoView.addEventListener("click", next);
 titleView.add(titleLabel);
-main.add(titleView);
+main.add(infoView, titleView);
 main.open();
 
 
