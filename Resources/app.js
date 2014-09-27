@@ -9,7 +9,7 @@ var next = function(a){
 		
 	});
 	var picView = Ti.UI.createImageView({
-		image: a.source.picture
+		image: a.source.pic
 	});
 	nextWin.add(picView);
 	nextWin.open();
@@ -38,8 +38,9 @@ var infoView = Ti.UI.createScrollView({
 	height : Ti.Platform.displayCaps.platformHeight - titleView,
 	layout: "vertical"
 });
-//infoView.addEventListener("click", next);
+// infoView.addEventListener("click", next);
 titleView.add(titleLabel);
 main.add(infoView, titleView);
 main.open();
+
 

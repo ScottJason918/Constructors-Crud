@@ -28,15 +28,23 @@ var yes = function (){
 	//console.log(thingInfo);
 };
 
+var infoView = Ti.UI.createScrollView({
+	top: 51,
+	height : Ti.Platform.displayCaps.platformHeight - titleView,
+	layout: "vertical"
+});
+
 var info = db.execute("SELECT * FROM webTab");
 while(info.isValidRow()){
 	var dbInfo = JSON.parse(info.fieldByName("web"));
 	imp.push(dbInfo);
 	info.next();
-	
 };
 
-for(var i=0; i < imp.length; i++){
+info.close();
+db.close();
+console.log(imp.length);
+for(var i=0; i < 15; i++){
 	var pic = imp[i].pic;
 	var title = imp[i].title;
 	var listView = Ti.UI.createView({
@@ -52,17 +60,12 @@ for(var i=0; i < imp.length; i++){
 		left: 5,
 		right: 5,
 		textAlign: "left",
-		picture: pic,
 		height: Ti.UI.SIZE
 		
 	});
-	console.log(title);
 	listView.add(text);
 	infoView.add(listView);
 };
-
-info.close();
-db.close();
 
 var no = function(){
 	alert("Data has not been received");
