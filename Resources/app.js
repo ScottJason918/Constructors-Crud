@@ -38,7 +38,7 @@ var infoView = Ti.UI.createScrollView({
 	height : Ti.Platform.displayCaps.platformHeight - titleView,
 	layout: "vertical"
 });
-// infoView.addEventListener("click", next);
+infoView.addEventListener("click", next);
 titleView.add(titleLabel);
 main.add(infoView, titleView);
 main.open();

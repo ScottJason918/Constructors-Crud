@@ -43,8 +43,7 @@ while(info.isValidRow()){
 
 info.close();
 db.close();
-console.log(imp.length);
-for(var i=0; i < 15; i++){
+for(var i=0; i < imp.length; i++){
 	var pic = imp[i].pic;
 	var title = imp[i].title;
 	var listView = Ti.UI.createView({
