@@ -1,6 +1,6 @@
 var db = Ti.Database.open("dBase");
 var data= [];
-var imp= [];
+
 
 ///Getting information from API and passing to Array
 var yes = function (){
@@ -33,38 +33,6 @@ var infoView = Ti.UI.createScrollView({
 	height : Ti.Platform.displayCaps.platformHeight - titleView,
 	layout: "vertical"
 });
-
-var info = db.execute("SELECT * FROM webTab");
-while(info.isValidRow()){
-	var dbInfo = JSON.parse(info.fieldByName("web"));
-	imp.push(dbInfo);
-	info.next();
-};
-
-info.close();
-db.close();
-for(var i=0; i < imp.length; i++){
-	var pic = imp[i].pic;
-	var title = imp[i].title;
-	var listView = Ti.UI.createView({
-		backgroundColor: "#EBEBEB",
-		bottom: 2,
-		height: Ti.UI.SIZE
-	});
-		var text = Ti.UI.createLabel({
-		text: title,
-		top : 2,
-		bottom: 2,
-		left: 5,
-		right: 5,
-		textAlign: "left",
-		height: Ti.UI.SIZE
-		
-	});
-	listView.add(text);
-	infoView.add(listView);
-	main.add(infoView);
-};
 
 var no = function(){
 	alert("Data has not been received");
